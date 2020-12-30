@@ -1,3 +1,4 @@
+//61.[文法編]コールバック関数をマスターしよう
 // function hello(name) {
 //     console.log('hello ' + name);
 // }
@@ -7,6 +8,7 @@
 // }
 
 // hello(getName);
+
 
 
 // function hello(callback) {
@@ -47,18 +49,53 @@
 // // hello(() => 'marry');
 
 
-function doSomething(a,b,callback) {
-    const result = callback(a,b);
-    console.log(result);
+
+// function doSomething(a,b,callback) {
+//     const result = callback(a,b);
+//     console.log(result);
+// }
+
+// function multiply(a,b) {
+//     return a * b;
+// }
+
+// function plus(a,b) {
+//     return a + b;
+// }
+
+// doSomething(2, 2, multiply);
+// doSomething(2, 3, plus);
+
+
+//62.[文法編]コールバック関数とループ処理
+const arry = [1,2,3,4,5];
+
+function forEach(ary) {
+    for(let i = 0; i < ary.length; i++) {
+        console.log(ary[i]);
+    }
 }
 
-function multiply(a,b) {
-    return a * b;
+forEach(arry);
+
+
+↓↓コールバック変数に書き換え
+const arry = [1,2,3,4,5];
+
+function forEach(ary, callback) {
+    for(let i = 0; i < ary.length; i++) {
+        callback(ary[i]);
+    }
 }
 
-function plus(a,b) {
-    return a + b;
+function log(val) {
+    console.log(val); 
 }
 
-doSomething(2, 2, multiply);
-doSomething(2, 3, plus);
+function double(val) {
+    val = val * 2;
+    log(val);
+}
+
+forEach(arry, log);
+
